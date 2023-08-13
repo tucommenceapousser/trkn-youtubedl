@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playlist</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: "Courier New", monospace;
+        }
+        h1 {
+            color: neonGreen;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        li {
+            margin-bottom: 20px;
+        }
+        .rainbow-text {
+            background-image: linear-gradient(to right, violet, indigo, blue, green, yellow, orange, red);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: rainbow 10s linear infinite;
+        }
+        a {
+            color: white;
+            text-decoration: none;
+        }
+        a:hover {
+            color: neonBlue;
+        }
+        .download-link {
+            color: neonRed;
+            margin-left: 10px;
+        }
+        @keyframes rainbow {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+    </style>
+</head>
+<body>
+    <h1 class="rainbow-text">H4ck3r Playlist</h1>
+    <ul>
+        <% playlist.forEach(item => { %>
+            <li>
+                <a href="<%= item.url %>" class="rainbow-text"><%= item.title %></a>
+                <a class="download-link" href="/download?url=<%= encodeURIComponent(item.url) %>">Download</a>
+            </li>
+        <% }); %>
+    </ul>
+</body>
+</html>
